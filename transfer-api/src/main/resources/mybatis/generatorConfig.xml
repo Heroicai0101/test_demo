@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="mybatis/generatorConfig.properties"/>
+
+    <context id="mysql_teslat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="suppressTypeWarnings" value="true"/>
+
+        <!-- 抑制注释的生成 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="${datasource.driverClass}" connectionURL="${datasource.jdbcUrl}"
+                        userId="${datasource.user}" password="${datasource.password}"/>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal,false可自动转化Long, Integer, Short 等 -->
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类存放位置 -->
+        <javaModelGenerator targetPackage="${modulePackage}" targetProject="src/main/java"/>
+
+        <!-- 生成xml映射存放位置 -->
+        <sqlMapGenerator targetPackage="${sqlMapperPackage}" targetProject="src/main/resources/mapper"/>
+
+        <!-- 生成xml对应client即dao接口存放位置  -->
+        <javaClientGenerator targetPackage="${daoMapperPackage}" type="XMLMAPPER" targetProject="src/main/java"/>
+
+        <!-- 设置表信息[可添加多个table标签] -->
+        <!-- 两个必选项，domainObjectName: 生成实体对象名，若未指定则自动根据表名生成；enableXXX: 指定是否生成对应的XXX语句 -->
+        <!--<table schema="demo" tableName="transfer_flow" domainObjectName="TransferFlowDO"-->
+               <!--enableInsert="true"-->
+               <!--enableSelectByPrimaryKey="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--enableUpdateByPrimaryKey="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--selectByPrimaryKeyQueryId="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="Integer" jdbcType="TINYINT"/>-->
+        <!--</table>-->
+
+        <!--<table schema="demo" tableName="asset_account" domainObjectName="AssertAccountDO"-->
+               <!--enableInsert="true"-->
+               <!--enableSelectByPrimaryKey="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--enableUpdateByPrimaryKey="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--selectByPrimaryKeyQueryId="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="Integer" jdbcType="TINYINT"/>-->
+        <!--</table>-->
+
+
+        <table schema="demo" tableName="transfer_event" domainObjectName="TransferEventDO"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               selectByPrimaryKeyQueryId="true"
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="status" javaType="Integer" jdbcType="TINYINT"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
